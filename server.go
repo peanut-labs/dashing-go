@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
-	"time"
 
 	"gopkg.in/husobee/vestigo.v1"
 	"gopkg.in/karlseguin/gerb.v0"
@@ -76,8 +75,8 @@ func (s *Server) EventsHandler(w http.ResponseWriter, r *http.Request) {
 		select {
 		case event := <-events:
 			data := event.Body
-			data["id"] = event.ID
-			data["updatedAt"] = int32(time.Now().Unix())
+			// data["id"] = event.ID
+			// data["updatedAt"] = int32(time.Now().Unix())
 			json, err := json.Marshal(data)
 			if err != nil {
 				continue
